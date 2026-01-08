@@ -13,7 +13,7 @@ You must have the following installed on your machine:
 1. Clone the repository
 
 ```bash
-git clone <frontend_repo_url>
+git clone https://github.com/Qasym/habit-share-frontend
 cd habit-share-frontend
 ```
 
