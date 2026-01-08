@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Login.css'
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
@@ -12,8 +14,7 @@ function Login() {
   }
 
   const handleRegister = () => {
-    // Handle register logic here
-    console.log('Register clicked')
+    navigate('/register')
   }
 
   return (
@@ -42,7 +43,9 @@ function Login() {
         </div>
         <button type="submit" className="login-btn">Login</button>
       </form>
-      <button onClick={handleRegister} className="register-btn">Register</button>
+      <button type="button" onClick={handleRegister} className="register-btn">
+        Register
+      </button>
     </div>
   )
 }
