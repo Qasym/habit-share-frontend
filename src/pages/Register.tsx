@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { API_ENDPOINTS } from '../config/api'
 import './Register.css'
 
 function Register() {
@@ -10,14 +11,33 @@ function Register() {
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
     if (password !== confirmPassword) {
       setError('Passwords do not match.')
       return
     }
     setError('')
-    console.log('Register attempt:', { username, email, password })
+    try {
+      const response = await fetch(API_ENDPOINTS.register(), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      })
+
+      if (!response.ok) {
+        setError('Registration failed. Please try again.')
+        return
+      }
+
+      const user = await response.json()
+      localStorage.setItem('user', JSON.stringify(user))
+      navigate('/')
+    } catch (err) {
+      setError('Registration failed. Please try again.')
+    }
   }
 
   return (

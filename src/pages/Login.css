@@ -50,3 +50,8 @@ input {
 .register-btn:hover {
   background-color: #e0e0e0;
 }
+
+.form-error {
+  color: #c0392b;
+  margin: 0.5rem 0;
+}

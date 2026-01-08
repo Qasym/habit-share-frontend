@@ -1,16 +1,37 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { API_ENDPOINTS } from '../config/api'
 import './Login.css'
 
 function Login() {
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic here
-    console.log('Login attempt:', { email, password })
+    setError('')
+    try {
+      const response = await fetch(API_ENDPOINTS.token(), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      })
+
+      if (!response.ok) {
+        setError('Login failed. Please check your credentials.')
+        return
+      }
+
+      const storedUser = localStorage.getItem('user')
+      const user = storedUser ? JSON.parse(storedUser) : { username }
+      navigate('/home', { state: { user } })
+    } catch (err) {
+      setError('Login failed. Please check your credentials.')
+    }
   }
 
   const handleRegister = () => {
@@ -22,12 +43,12 @@ function Login() {
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="username">Username:</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -41,6 +62,7 @@ function Login() {
             required
           />
         </div>
+        {error ? <p className="form-error">{error}</p> : null}
         <button type="submit" className="login-btn">Login</button>
       </form>
       <button type="button" onClick={handleRegister} className="register-btn">
