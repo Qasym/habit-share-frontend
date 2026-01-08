@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Habit Share Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite frontend for the Habit Share app.
 
-Currently, two official plugins are available:
+## Requirements
+You must have the following installed on your machine:
+- Docker (v20+ recommended) (Docker version 29.1.3, build f52814d on my machine)
+- Docker Compose (v2+) (Docker Compose version v2.40.3-desktop.1 on my machine)
+- Optional: Node.js (LTS recommended) and npm for local (non-Docker) dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup instructions
 
-## React Compiler
+1. Clone the repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone <frontend_repo_url>
+cd habit-share-frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Build and start the services
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+docker compose up --build
 ```
+
+This will:
+
+- Build the frontend image
+- Start the Vite dev server container
+
+3. Verify the app is running
+
+Open your browser at `http://localhost:5173`.
+
+4. Backend
+
+
+Follow the backend setup instructions here:
+https://github.com/Qasym/habit-share-back
+
+
+***If you want to contribute to the frontend but lack the needed api, let me know by opening an issue at the repo above. For the time being try to come up with a smart solution that can be easily substituted by the code using the api***
+
+
+## Run locally (optional)
+
+```bash
+npm install
+npm run dev
+```
+
+Vite serves the app at `http://localhost:5173` by default.
+
+## Contributing
+
+1. Create a feature branch from `master`.
+2. Keep changes focused and use clear commit messages.
+3. Run `npm run lint` and `npm run build` before opening a PR.
+4. Include screenshots or short notes for UI changes.
