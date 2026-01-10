@@ -82,34 +82,6 @@
   gap: 1.5rem;
 }
 
-.habit-card {
-  padding: 1.4rem;
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 14px 24px rgba(27, 27, 58, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.habit-card h2 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #1b1b3a;
-}
-
-.habit-card p {
-  margin: 0;
-  color: #3f3f4a;
-  line-height: 1.5;
-}
-
-.habit-meta {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #d97706;
-  margin-top: auto;
-}
 
 .modal-overlay {
   position: fixed;
@@ -221,5 +193,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
 }
