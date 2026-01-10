@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color: #213547;
-  background-color: #ffffff;
+  background-color: #0b0b10;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -12,13 +12,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
 body {
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100%;
+  background: radial-gradient(circle at top, rgba(147, 52, 234, 0.25), transparent 50%), #0b0b10;
+}
+
+#root {
+  min-height: 100%;
 }
 
 h1 {
