@@ -19,10 +19,6 @@ import workIcon from '../assets/habitkit/work.svg'
 import morningIcon from '../assets/habitkit/morning.svg'
 import eveningIcon from '../assets/habitkit/evening.svg'
 import otherIcon from '../assets/habitkit/diamond.svg'
-import meditationIcon from '../assets/habitkit/meditation.svg'
-import sportIcon from '../assets/habitkit/dumbbell.svg'
-import runningIcon from '../assets/habitkit/running.svg'
-import appleIcon from '../assets/habitkit/apple.svg'
 import './Home.css'
 
 type UserProfile = {
@@ -77,56 +73,7 @@ const categoryVisuals: Record<string, { icon: string; primary: string; secondary
   Other: { icon: otherIcon, primary: '#DF7AF0', secondary: '#352238' },
 }
 
-const defaultHabits: Habit[] = [
-  {
-    id: 'habit-meditation',
-    name: 'Meditation',
-    description: 'Meditate daily for 15 minutes',
-    completionsPerDay: 1,
-    categories: ['Fitness', 'Health', 'Morning'],
-    icon: meditationIcon,
-    primaryColor: '#DF7AF0',
-    secondaryColor: '#352238',
-    streakGoal: '30 days',
-    reminder: '07:00',
-  },
-  {
-    id: 'habit-sport',
-    name: 'Sport',
-    description: 'Weightlifting, running or similar',
-    completionsPerDay: 1,
-    categories: ['Health', 'Fitness', 'Social'],
-    icon: sportIcon,
-    primaryColor: '#7E8DE9',
-    secondaryColor: '#131524',
-    streakGoal: '3 days/week',
-    reminder: '18:00',
-  },
-  {
-    id: 'habit-running',
-    name: 'Running',
-    description: 'Go for a jog every other day',
-    completionsPerDay: 1,
-    categories: ['Morning', 'Health', 'Fitness'],
-    icon: runningIcon,
-    primaryColor: '#FAC033',
-    secondaryColor: '#382C1B',
-    streakGoal: '14 runs',
-    reminder: '06:30',
-  },
-  {
-    id: 'habit-eating',
-    name: 'Healthy Eating',
-    description: "Eat healthy food and don't overeat",
-    completionsPerDay: 3,
-    categories: ['Evening', 'Health'],
-    icon: appleIcon,
-    primaryColor: '#43C5DD',
-    secondaryColor: '#053737',
-    streakGoal: '21 meals',
-    reminder: '12:00',
-  },
-]
+const defaultHabits: Habit[] = []
 
 function Home() {
   const location = useLocation()
@@ -240,7 +187,7 @@ function Home() {
           </button>
           <div className="app-brand">
             <span className="app-brand-primary">Habit</span>
-            <span className="app-brand-accent">Kit</span>
+            <span className="app-brand-accent">League</span>
           </div>
         </div>
         <div className="appbar-actions">
@@ -264,8 +211,8 @@ function Home() {
 
       <section className="welcome-row">
         <div>
-          <p className="welcome-eyebrow">Welcome back</p>
-          <h1 className="welcome-title">{username}'s Habits</h1>
+          <p className="welcome-eyebrow">Welcome, {username}</p>
+          <h1 className="welcome-title">Your habits</h1>
         </div>
         <div className="stat-badge">
           <span>{habits.length}</span>
