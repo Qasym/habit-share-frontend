@@ -1,28 +1,101 @@
 .habit-card {
-  padding: 1.4rem;
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 14px 24px rgba(27, 27, 58, 0.08);
+  padding: 1rem 1.1rem 1.1rem;
+  border-radius: 12px;
+  background: var(--card, #09090b);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
   display: flex;
   flex-direction: column;
+  gap: 0.9rem;
+}
+
+.habit-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.habit-card__title {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.habit-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--habit-secondary, #352238);
+  display: grid;
+  place-items: center;
+}
+
+.habit-card__icon img {
+  width: 22px;
+  height: 22px;
+}
+
+.habit-card__title h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+
+.habit-card__title p {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.habit-card__check {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--habit-secondary, #352238);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.habit-card__meta {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.habit-card h2 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #1b1b3a;
+.habit-card__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
-.habit-card p {
-  margin: 0;
-  color: #3f3f4a;
-  line-height: 1.5;
+.habit-card__chip {
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.habit-meta {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #d97706;
-  margin-top: auto;
+.habit-card__heatmap {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 12px;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.habit-card__heatmap-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.habit-card__heatmap-cell--active {
+  background: var(--habit-primary, #df7af0);
 }
