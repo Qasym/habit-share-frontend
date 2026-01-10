@@ -22,7 +22,7 @@ function Login() {
       })
 
       if (!response.ok) {
-        setError('Login failed. Please check your credentials.')
+        setError('Login failed. Please check your credentials. code=' + response.status)
         return
       }
 
@@ -30,7 +30,7 @@ function Login() {
       const user = storedUser ? JSON.parse(storedUser) : { username }
       navigate('/home', { state: { user } })
     } catch (err) {
-      setError('Login failed. Please check your credentials.')
+      setError('Login failed. Please check your credentials. err=' + (err as Error).message)
     }
   }
 
